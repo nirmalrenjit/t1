@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Login</title>
+ <link rel="stylesheet" type="text/css" href="1.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+ <form name="form" id="formid" onsubmit = "valid()" >
+   <h1 align=center>LOGIN</h1>
+   <fieldset align=center>
+     <legend>Sign in</legend>
+     First Name<br><input type=text  id="fn" ><br><br>
+     Last Name<br><input type=text  id="ln" ><br><br>
+     Password<br><input type=password placeholder="password" id="pass"><br><br>
+     Confirm Password<br><input type=password  placeholder="password" id="passconf"><br><br>
+     Date Of Birth<br><input type=date  id="dob" ><br><br>
+     Email<br><input type=text  title="Eg:example@asd.com" id="email" name=email1><br><br>
+     Mobile Number<br><input id="mno"><br><br>
+     <input type="submit" value="Login" >
+     <h2 id="s" hidden=""> Validation Successfull</h2>
+     <h2 id="f" class="f" hidden=""> Validation Failed</h2>
+   </fieldset>
+</form>
+
+<script>
+ document.getElementById("formid").addEventListener("submit", function(event){
+   event.preventDefault();
+});
+
+function valid() {
+
+  var password = document.getElementById("pass"), confirm_password = document.getElementById("passconf");
+  var flag = 10;
+  var fname=document.getElementById("fn"),lname=document.getElementById("ln");
+  var dd=new Date(document.getElementById("dob").value);
+  var patname=/^[a-zA-Z]+$/;
+  var today=new Date();
+  var pat=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+  var email=document.getElementById("email").value;
+  var mno=document.getElementById("mno").value;
+
+ mno=mno.replace(/-/g,"");
+document.getElementById("mno").value=mno;
+var str=document.getElementById("mno");
+var r=/^[0-9]{10}$/.exec(str.value);
+var m=/^[+][0-9]{12}$/.exec(str.value);
+if(r!=null){flag=0;}
+if(m!=null){flag=0;}
+
+ if((password.value==confirm_password.value)&&(patname.test(fname.value))&&(patname.test(lname.value))&&(dd<today)&&(pat.test(email)==true)&&flag==0)
+ {
+   document.getElementById("s").style.display="block";
+   document.getElementById("f").style.display="none";
+ }
+ else {
+   document.getElementById("f").style.display="block";
+   document.getElementById("s").style.display="none";
+ }
+
+}
+</script>
+ </body>
+</html>

@@ -1,0 +1,26 @@
+h2{
+ color:green;
+}
+
+
+body{
+background-image:url("background.png")
+}
+h1
+{color:red;
+}
+.f {
+  color:red;
+}
+fieldset {
+    display: block;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 0.35em;
+    border-color: red
+}
+@media only screen and (max-width: 500px) {
+    body {
+        background-image:url("12.png") ;
+    }
+}
